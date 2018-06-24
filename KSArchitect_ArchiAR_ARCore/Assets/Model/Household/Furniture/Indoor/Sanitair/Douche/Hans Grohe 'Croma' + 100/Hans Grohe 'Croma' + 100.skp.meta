@@ -1,14 +1,12 @@
 fileFormatVersion: 2
 guid: dc8fdb746a87c2841bc74f9fe6423fe6
-timeCreated: 1511825912
-licenseType: Free
 SketchUpImporter:
   generateBackFace: 0
   mergeCoplanarFaces: 0
   selectedNodes: 0000000001000000020000000300000004000000
   assetHash:
     serializedVersion: 2
-    Hash: 03ce8ec451d5a2a17c9ab44fb0de2807
+    Hash: ad0c9ba428aea31b4632edda37a052e8
   longitude: -105.283
   latitude: 40.017
   northCorrection: -0
@@ -39,16 +37,24 @@ SketchUpImporter:
     400010: HG Croma 100#5
     2300000: hcb51658.dxf#2_MeshPart0
     2300002: hcb51658.dxf#2_MeshPart1
+    2300004: hcb51658.dxf#2
     3300000: hcb51658.dxf#2_MeshPart0
     3300002: hcb51658.dxf#2_MeshPart1
+    3300004: hcb51658.dxf#2
     4300000: Mesh hcb51658.dxf#2_MeshPart0
     4300002: Mesh hcb51658.dxf#2_MeshPart1
+    4300004: Mesh hcb51658.dxf#2
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Color_002
     second: {fileID: 2100000, guid: 837f9084ecfe9eb43b0eedba1830cb8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color_002]'
+    second: {fileID: 2100000, guid: c2877f6a30ff16244bf30dee3d2c6aa0, type: 2}
   materials:
     importMaterials: 1
     materialName: 2
@@ -67,6 +73,7 @@ SketchUpImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -91,6 +98,8 @@ SketchUpImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

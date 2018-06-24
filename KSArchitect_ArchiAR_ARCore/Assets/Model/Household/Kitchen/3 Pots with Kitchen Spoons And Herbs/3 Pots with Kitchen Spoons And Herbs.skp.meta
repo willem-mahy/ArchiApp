@@ -1,14 +1,12 @@
 fileFormatVersion: 2
 guid: 839fc24e24bb25e42b900f5a4b277570
-timeCreated: 1511697217
-licenseType: Free
 SketchUpImporter:
   generateBackFace: 0
   mergeCoplanarFaces: 0
   selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e0000003f000000400000004100000042000000430000004400000045000000460000004700000048000000490000004a0000004b0000004c0000004d0000004e0000004f000000500000005100000052000000530000005400000055000000560000005700000058000000590000005a0000005b0000005c0000005d0000005e0000005f000000600000006100000062000000630000006400000065000000660000006700000068000000690000006a0000006b0000006c000000
   assetHash:
     serializedVersion: 2
-    Hash: 8c536c83d9eff4ac39b6c7349435e606
+    Hash: f3495d69c331ea1ab874ce8e189847f3
   longitude: -47.917
   latitude: -15.783
   northCorrection: -0
@@ -198,6 +196,7 @@ SketchUpImporter:
     2300096: Peace Lilly Leaf 7
     2300098: Peace Lilly Leaf 8
     2300100: Peace Lilly Leaf 9
+    2300102: 19 Kitchen
     3300000: 19 Kitchen_MeshPart0
     3300002: 19 Kitchen_MeshPart1
     3300004: 3DGeom~11
@@ -249,6 +248,7 @@ SketchUpImporter:
     3300096: Peace Lilly Leaf 7
     3300098: Peace Lilly Leaf 8
     3300100: Peace Lilly Leaf 9
+    3300102: 19 Kitchen
     4300000: Mesh 3DGeom~22
     4300002: Mesh 3DGeom~11
     4300004: Mesh 3DGeom~12
@@ -259,6 +259,7 @@ SketchUpImporter:
     4300014: Mesh 19 Kitchen_MeshPart0
     4300016: Mesh 19 Kitchen_MeshPart1
     4300018: Mesh Group 107
+    4300020: Mesh 19 Kitchen
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -270,6 +271,11 @@ SketchUpImporter:
       assembly: UnityEngine.CoreModule
       name: Peace Lilly
     second: {fileID: 2100000, guid: eeb880d368322df4d8c50d0534189286, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: '[Color_G18]'
+    second: {fileID: 2100000, guid: e25f03a2e18ffa84ba8f4bf8b1328b1a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -323,6 +329,7 @@ SketchUpImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -347,6 +354,8 @@ SketchUpImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
