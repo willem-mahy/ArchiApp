@@ -23,15 +23,17 @@ namespace ArchiAR_ARCore_AR
         /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR background).
         /// </summary>
-        public Camera FirstPersonCamera;        
+        public Camera FirstPersonCamera;
 
-        public List<float> m_modelScales = new List<float>()
+        private int DefaultModelScaleIndex = 0;
+
+        public List<int> m_modelScales = new List<int>()
         {
-            (1.0f /50.0f),
-            (1.0f /25.0f),
-            (1.0f /5.0f),
-            (1.0f /2.0f),
-            1.0f
+            50,
+            25,
+            5,
+            2,
+            1
         };
 
         /// <summary>
@@ -163,8 +165,16 @@ namespace ArchiAR_ARCore_AR
 
             if (m_textModelScale)
             {
-                var ss = m_model ? m_model.transform.localScale.x.ToString() : "-";
-                m_textModelScale.text = ss;
+                if (m_model != null)
+                {
+                    var scaleInverse = Math.Round(1.0f / m_model.transform.localScale.x);
+                    m_textModelScale.text = "1/" + scaleInverse.ToString();
+                }
+                else
+                {
+                    m_textModelScale.text = "-";
+                }
+
             }
 
             if (!m_loadingProject)
@@ -252,6 +262,14 @@ namespace ArchiAR_ARCore_AR
             SetModel(position, rotation, 0);
         }
 
+        public void PlaceModelAtOrigin()
+        {
+            Vector3 position = Vector3.zero;
+            Quaternion rotation = Quaternion.identity;
+            float rotationY = 0;
+            SetModel(position, rotation, rotationY);
+        }
+
         private void SetModel(Vector3 position, Quaternion rotation, float rotationY)
         {
             var activeProject = m_projectManager.GetActiveProject();
@@ -335,8 +353,6 @@ namespace ArchiAR_ARCore_AR
             layerManager.SetAllLayersVisible(true);
         }
 
-        int DefaultModelScaleIndex = 0;
-
         public void ModelScaleReset()
         {
             SetModelScale(DefaultModelScaleIndex);
@@ -360,9 +376,17 @@ namespace ArchiAR_ARCore_AR
             if (!m_model)
                 return;
 
-            m_modelScaleIndex = modelScaleIndex;
+            foreach (var modelScale in m_modelScales)
+            {
+                Debug.Log("m_modelScalesItem=" + modelScale.ToString());
+            }
+            m_modelScaleIndex = Math.Min(m_modelScales.Count-1, Math.Max(0, modelScaleIndex));
 
-            float s = m_modelScales[m_modelScaleIndex];
+            Debug.Log("m_modelScaleIndex=" + m_modelScaleIndex.ToString());
+            int si = m_modelScales[m_modelScaleIndex];
+            Debug.Log("si=" + si.ToString());
+            float s = 1.0f / (float)si;
+            Debug.Log("s=" + s.ToString());
             m_model.transform.localScale = new Vector3(s, s, s);
 
             UpdateCameraClipPlanes();
@@ -373,7 +397,7 @@ namespace ArchiAR_ARCore_AR
         // when viewing the model at smaller scales from close up.
         private void UpdateCameraClipPlanes()
         {
-            float s = m_modelScales[m_modelScaleIndex];
+            float s = 1.0f / m_modelScales[m_modelScaleIndex];
 
             Camera.main.nearClipPlane = m_defaultNearClipPlane * s;
         }
