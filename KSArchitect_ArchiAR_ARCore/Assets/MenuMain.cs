@@ -6,6 +6,7 @@ public class MenuMain : MonoBehaviour {
 
     public GameObject m_menuParent = null;
     public GameObject m_menuModel = null;
+    public GameObject m_menuPOI = null;
     public GameObject m_menuGraphicsSettings = null;
     public GameObject m_menuDebug = null;
 
@@ -27,6 +28,11 @@ public class MenuMain : MonoBehaviour {
     public void OnButtonMenuModelClick()
     {
         OpenMenu(m_menuModel);
+    }
+
+    public void OnButtonMenuPOIClick()
+    {
+        OpenMenu(m_menuPOI);
     }
 
     public void OnButtonMenuGraphicsSettingsClick()
