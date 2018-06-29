@@ -60,8 +60,6 @@ namespace ArchiAR_ARCore_AR
 
         public Text m_textModelRotation = null;
 
-        public GameObject m_menu = null;
-
         public GameObject m_panelDebugInfo = null;
 
         private int m_modelScaleIndex = 0;
@@ -95,15 +93,7 @@ namespace ArchiAR_ARCore_AR
         public void Start()
         {
             m_defaultNearClipPlane = Camera.main.nearClipPlane;
-        }
-
-        public void ToggleMenuVisible()
-        {
-            if (!m_menu)
-                return;
-
-            m_menu.SetActive(!m_menu.activeSelf);
-        }
+        }        
 
         public void ToggleShowDebugInfo_ValueChanged(Toggle toggle)
         {
