@@ -32,7 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/KS/Projects/Scenes/Project016.unity
     guid: 34c2d95a907c1a84bbd2427be1a278ca
-  - enabled: 0
+  - enabled: 1
     path: Assets/KS/Projects/Scenes/Project024.unity
     guid: 9da1f93e06838fe46be010fa66e63a6c
   - enabled: 0
@@ -53,3 +53,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/KS/Projects/Scenes/Project040.unity
     guid: a69c3106d21545a48b89eb5da84e8f32
+  - enabled: 1
+    path: Assets/KS/Projects/Scenes/Project124.unity
+    guid: 1797718ff98ff3046be4c1b7e119ea17
+  m_configObjects: {}

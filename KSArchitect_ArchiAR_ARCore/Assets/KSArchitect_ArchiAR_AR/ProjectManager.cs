@@ -22,14 +22,14 @@ namespace ArchiAR_ARCore_AR
         // Use this for initialization
         void Start()
         {
-            DynamicallyLoadProjects();
+            DynamicallyLoadProjects(200);
         }
 
-        private void DynamicallyLoadProjects()
+        private void DynamicallyLoadProjects(int maxProjectIndex)
         {
             m_projects.Clear();
 
-            for (int i = 0; i < 100; ++i) // Check for Project000 up to to Project100
+            for (int i = 0; i < maxProjectIndex; ++i) // Check for Project000 up to to Project100
             {
                 var sceneName = "Project" + StringUtil.Get3Digit(i);
 
