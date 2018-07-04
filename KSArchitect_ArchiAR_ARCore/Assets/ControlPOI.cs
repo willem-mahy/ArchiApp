@@ -14,40 +14,64 @@ public class ControlPOI : MonoBehaviour {
 
     int m_activePOIIndex = -1;
 
+    public string m_POIpath = null;
+
+
     // Use this for initialization
     void Start () {
         m_activePOIIndex = 0;
+
+        var poisPath = "/World/Construction/Phases/Final/POI/AR";
+        Init(poisPath);
     }
 
-    private string[] GetPOINames()
+    void Init(string poisPath)
+    {
+        m_POIpath = poisPath;            
+    }
+
+    private List<GameObject> GetPOIs(string poisPath)
     {
         //TODO: Get from loaded model
-        string[] poiNames = { "Front", "Back", "Center" };
-;
-        return poiNames;
+        List<GameObject> pois = new List<GameObject>();
+
+        var goPOIs = GameObject.Find(poisPath);
+
+        if (goPOIs != null)
+        {
+            foreach (Transform poi in goPOIs.transform)
+            {
+                pois.Add(poi.gameObject);
+            }
+        }
+
+        return pois;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        var poiNames = GetPOINames();
+
+        var POIs = GetPOIs(m_POIpath);
 
         if (m_textPOI)
         {
-            m_textPOI.text = (m_activePOIIndex == -1 ? "" :  poiNames[m_activePOIIndex]);
+            m_textPOI.text = (m_activePOIIndex == -1 ? "" : POIs.Count <= m_activePOIIndex ? "NA" : POIs[m_activePOIIndex].name);
         }
 
         m_buttonPrevious.interactable = (m_activePOIIndex > 0);
 
-        m_buttonNext.interactable = (m_activePOIIndex < poiNames.Length - 1);
+        m_buttonNext.interactable = (m_activePOIIndex < POIs.Count - 1);
     }
 
     public void Next_OnCLick()
     {
-        m_activePOIIndex = Math.Min(++m_activePOIIndex, GetPOINames().Length-1);
+        m_activePOIIndex = Math.Min(++m_activePOIIndex, GetPOIs(m_POIpath).Count-1);
+        //ActivatePOI(POIs[m_activePOIIndex]);
     }
 
     public void Previous_OnCLick()
     {
         m_activePOIIndex = Math.Max(--m_activePOIIndex, 0);
+        //ActivatePOI(POIs[m_activePOIIndex]);
     }
 }
