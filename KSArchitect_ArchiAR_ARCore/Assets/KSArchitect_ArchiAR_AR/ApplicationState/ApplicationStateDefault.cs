@@ -70,6 +70,8 @@ namespace ArchiAR_ARCore_AR
 
         private bool m_loadingProject = false;
 
+        public ControlPOI m_controlPOI = null;
+
         /// <summary>
         /// The rotation in degrees need to apply to model when it is placed.
         /// </summary>
@@ -110,6 +112,8 @@ namespace ArchiAR_ARCore_AR
         {
             _UpdateApplicationLifecycle();
 
+            ActivatePOI();
+            
             // Hide snackbar when currently tracking at least one plane.
             Session.GetTrackables<DetectedPlane>(m_AllPlanes);
             bool showSearchingUI = true;
@@ -310,11 +314,11 @@ namespace ArchiAR_ARCore_AR
                 // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
                 m_model.transform.Rotate(0, rotationY, 0, Space.Self);
 
-#if UNITY_EDITOR
-#else
-                // Make model a child of the model anchor.
-                m_model.transform.parent = m_modelAnchor.transform;
-#endif
+                if (m_modelAnchor)
+                {
+                    // Make model a child of the model anchor.
+                    m_model.transform.parent = m_modelAnchor.transform;
+                }
             }
 
             var layerManager = gameObject.GetComponent<LayerManager>();
@@ -458,6 +462,26 @@ namespace ArchiAR_ARCore_AR
 
             var pos = m_model.transform.localPosition + 0.1f * Vector3.up;
             m_model.transform.localPosition = pos;
+        }
+
+        public void ActivatePOI()
+        {
+            if (m_loadingProject)
+                return;
+
+            if (!m_model)
+                return;
+
+            var poi = m_controlPOI.GetActivePOI();
+
+            if (poi)
+            {
+                m_model.transform.localPosition = -poi.transform.localPosition;
+            }
+            else
+            {
+                m_model.transform.localPosition = Vector3.zero;
+            }
         }
 
         /// <summary>
